@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "amiibox.azurewebsites.net"
+      "url": "https://amiibox.azurewebsites.net"
     }
   ],
   "paths": {
