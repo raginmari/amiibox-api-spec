@@ -1,28 +1,47 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.1",
   "info": {
     "title": "amiibox.API",
     "version": "v1"
   },
-  "host": "amiibox.azurewebsites.net",
+  "servers": [
+    {
+      "url": "https://amiibox.azurewebsites.net"
+    }
+  ],
   "paths": {
     "/AmiiboUserData": {
       "get": {
         "tags": [
           "AmiiboUserData"
         ],
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
         "responses": {
           "200": {
             "description": "Success",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AmiiboUserData"
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AmiiboUserData"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AmiiboUserData"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AmiiboUserData"
+                  }
+                }
               }
             }
           }
@@ -34,31 +53,56 @@
         "tags": [
           "AmiiboUserData"
         ],
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
         "parameters": [
           {
-            "in": "path",
             "name": "id",
+            "in": "path",
             "required": true,
-            "type": "string",
-            "pattern": "^[A-Fa-f0-9]{16}$"
+            "schema": {
+              "pattern": "^[A-Fa-f0-9]{16}$",
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/AmiiboUserData"
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AmiiboUserData"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AmiiboUserData"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AmiiboUserData"
+                }
+              }
             }
           },
           "404": {
             "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -67,41 +111,59 @@
         "tags": [
           "AmiiboUserData"
         ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
         "parameters": [
           {
-            "in": "path",
             "name": "id",
-            "required": true,
-            "type": "string",
-            "pattern": "^[A-Fa-f0-9]{16}$"
-          },
-          {
-            "in": "body",
-            "name": "body",
+            "in": "path",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AmiiboUserDataPutDto"
+              "pattern": "^[A-Fa-f0-9]{16}$",
+              "type": "string"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AmiiboUserDataPutDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AmiiboUserDataPutDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AmiiboUserDataPutDto"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "204": {
             "description": "No Content"
           },
           "400": {
             "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -110,18 +172,15 @@
         "tags": [
           "AmiiboUserData"
         ],
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
         "parameters": [
           {
-            "in": "path",
             "name": "id",
+            "in": "path",
             "required": true,
-            "type": "string",
-            "pattern": "^[A-Fa-f0-9]{16}$"
+            "schema": {
+              "pattern": "^[A-Fa-f0-9]{16}$",
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -130,8 +189,22 @@
           },
           "404": {
             "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -142,34 +215,48 @@
         "tags": [
           "User"
         ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/UserRegistrationDto"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegistrationDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegistrationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegistrationDto"
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
           "204": {
             "description": "No Content"
           },
           "400": {
             "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -180,146 +267,181 @@
         "tags": [
           "User"
         ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/UserLoginDto"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginDto"
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Success"
           },
           "401": {
             "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
       }
     }
   },
-  "definitions": {
-    "AmiiboId": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string",
-          "readOnly": true
-        }
-      }
-    },
-    "AmiiboUserData": {
-      "type": "object",
-      "properties": {
-        "amiiboId": {
-          "$ref": "#/definitions/AmiiboId"
+  "components": {
+    "schemas": {
+      "AmiiboId": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
         },
-        "isOnWishList": {
-          "type": "boolean"
-        },
-        "isInCollection": {
-          "type": "boolean"
-        }
-      }
-    },
-    "AmiiboUserDataPutDto": {
-      "type": "object",
-      "properties": {
-        "isOnWishList": {
-          "type": "boolean"
-        },
-        "isInCollection": {
-          "type": "boolean"
-        }
-      }
-    },
-    "ProblemDetails": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "status": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "detail": {
-          "type": "string"
-        },
-        "instance": {
-          "type": "string"
-        }
+        "additionalProperties": false
       },
-      "additionalProperties": { }
-    },
-    "UserLoginDto": {
-      "required": [
-        "password",
-        "username"
-      ],
-      "type": "object",
-      "properties": {
-        "username": {
-          "format": "email",
-          "minLength": 1,
-          "type": "string"
+      "AmiiboUserData": {
+        "type": "object",
+        "properties": {
+          "amiiboId": {
+            "$ref": "#/components/schemas/AmiiboId"
+          },
+          "isOnWishList": {
+            "type": "boolean"
+          },
+          "isInCollection": {
+            "type": "boolean"
+          }
         },
-        "password": {
-          "minLength": 1,
-          "type": "string"
-        }
+        "additionalProperties": false
+      },
+      "AmiiboUserDataPutDto": {
+        "type": "object",
+        "properties": {
+          "isOnWishList": {
+            "type": "boolean"
+          },
+          "isInCollection": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "UserLoginDto": {
+        "required": [
+          "password",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserRegistrationDto": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string",
+            "format": "password"
+          }
+        },
+        "additionalProperties": false
       }
     },
-    "UserRegistrationDto": {
-      "required": [
-        "email",
-        "password"
-      ],
-      "type": "object",
-      "properties": {
-        "email": {
-          "format": "email",
-          "minLength": 1,
-          "type": "string"
-        },
-        "password": {
-          "format": "password",
-          "minLength": 1,
-          "type": "string"
-        }
+    "securitySchemes": {
+      "apikey": {
+        "type": "apiKey",
+        "description": "Specify API key that authenticates the client app.",
+        "name": "ApiKey",
+        "in": "header"
+      },
+      "bearer": {
+        "type": "http",
+        "description": "Specify JWT token that authenticates the user of the client app.",
+        "scheme": "bearer"
       }
-    }
-  },
-  "securityDefinitions": {
-    "apikey": {
-      "type": "apiKey",
-      "name": "ApiKey",
-      "in": "header",
-      "description": "Specify API key that authenticates the client app."
     }
   },
   "security": [
     {
       "apikey": [ ]
+    },
+    {
+      "bearer": [ ]
     }
   ]
 }
